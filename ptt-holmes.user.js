@@ -3,7 +3,7 @@
 // @namespace   https://github.com/gslin/ptt-holmes
 // @match       https://www.ptt.cc/bbs/*
 // @grant       none
-// @version     0.20250416.0
+// @version     0.20250424.0
 // @author      Gea-Suan Lin <gslin@gslin.com>
 // @description Add info links on Ptt
 // @license     MIT
@@ -27,6 +27,9 @@
   // IP address information
   document.querySelectorAll('.push-ipdatetime').forEach(el => {
     const ip = el.innerText.trim().split(' ')[0];
+    if (!ip.match(/^[.0-9:]+$/)) {
+      return;
+    }
 
     const template = [
       ['IntelX', 'https://intelx.io/?s='],
